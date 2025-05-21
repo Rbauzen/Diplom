@@ -1,0 +1,58 @@
+/* frontend/src/UsageHistory.css */
+.usage-history-container {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.usage-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.usage-history-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #888;
+    padding: 0 5px;
+}
+.close-btn:hover {
+    color: #333;
+}
+
+.history-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.9em;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-timestamp {
+    color: #555;
+}
+
+.history-details {
+    color: #333;
+    font-weight: 500;
+}

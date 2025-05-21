@@ -1,0 +1,417 @@
+/* frontend/src/App.css */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f6f8; /* Более приятный светлый фон */
+  color: #333;
+}
+
+.App {
+  text-align: center; /* Пока оставим, можно убрать для компонентного подхода */
+  padding: 20px;
+  max-width: 900px; /* Ограничим максимальную ширину для лучшей читаемости */
+  margin: 0 auto;   /* Центрируем основной контейнер */
+  background-color: #ffffff; /* Белый фон для основного контента */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Небольшая тень */
+  border-radius: 8px; /* Скругленные углы */
+  min-height: calc(100vh - 40px); /* Чтобы занимал почти весь экран по высоте */
+}
+
+.App-header {
+  background-color: #343a40; /* Более стандартный темный цвет для шапки */
+  padding: 15px 20px; /* Немного уменьшим вертикальные паддинги */
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 0 0 8px 8px; /* Скруглим только нижние углы, если шапка прижата к верху */
+}
+
+.App-header h1 {
+  margin: 0 0 15px 0; /* Отступ снизу от заголовка */
+  font-size: 1.8em; /* Немного уменьшим для мобильных */
+  text-align: center; /* Центрируем заголовок */
+}
+
+.protocol-switcher {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+}
+
+.protocol-switcher label {
+  margin-right: 10px;
+}
+
+.protocol-switcher select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+main {
+  padding: 0 15px; /* Небольшие отступы для контента внутри main */
+  text-align: left; /* Выравнивание контента внутри main по левому краю */
+}
+
+/* Стили для кнопок (общие) */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: calc(100% - 22px); /* Учитываем padding и border */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Важно для правильного расчета ширины */
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+    margin-bottom: 15px;
+}
+
+.modal-content div > label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-content input[type="number"] {
+    width: auto; /* Не растягивать на всю ширину */
+    margin-right: 5px;
+}
+
+
+.modal-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.modal-actions button {
+  margin-left: 10px;
+}
+
+.modal-actions .cancel-btn {
+    background-color: #6c757d;
+}
+.modal-actions .cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+main h3 { /* Заголовок формы "Добавить/Редактировать лекарство" */
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+main form { /* Общие стили для формы добавления/редактирования */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Увеличим немного расстояние между блоками полей */
+  max-width: 600px; /* Можно сделать форму чуть шире */
+  margin: 20px auto; /* Отступы сверху/снизу и центрирование */
+  padding: 20px;
+  background-color: #f9f9f9; /* Легкий фон для самой формы */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+main form div { /* Контейнер для каждой пары label + input/select/textarea */
+  display: flex;
+  flex-direction: column; /* Метка над полем ввода */
+}
+
+main form label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Убираем глобальный width: calc(100% - 22px) для input, select, textarea,
+   чтобы они не конфликтовали с другими возможными инпутами вне этой формы
+   и применяли стили более специфично.
+   Если ты хочешь оставить глобальные стили, то можно их переопределить здесь
+   или использовать более специфичные селекторы для формы.
+*/
+main form input[type="text"],
+main form input[type="number"],
+main form input[type="date"],
+main form input[type="url"],
+main form select,
+main form textarea {
+  padding: 10px 12px; /* Немного другие паддинги */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em; /* Размер шрифта в полях ввода */
+  box-sizing: border-box;
+  width: 100%; /* Поля ввода занимают всю ширину контейнера div */
+}
+
+main form input:focus,
+main form select:focus,
+main form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+main form textarea {
+  min-height: 100px; /* Чуть больше высота для текстовых областей */
+  resize: vertical;
+}
+
+main form .form-actions { /* Контейнер для кнопок формы, если ты его добавишь */
+  display: flex;
+  justify-content: flex-end; /* Кнопки справа */
+  gap: 10px;
+  margin-top: 20px; /* Отступ сверху перед кнопками */
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+/* Если кнопки не обернуты в .form-actions, можно стилизовать их напрямую,
+   но лучше обернуть для лучшего контроля над расположением.
+   В твоем текущем JSX кнопки просто идут одна за другой.
+   Можно оставить их так или обернуть.
+   Ниже пример стилей, если они не обернуты, но идут последними в форме.
+*/
+main form button[type="submit"] {
+  background-color: #28a745; /* Зеленый для основной кнопки действия */
+  padding: 10px 20px;
+}
+main form button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+main form button[type="button"] { /* Кнопка "Отмена" */
+  background-color: #6c757d;
+  padding: 10px 20px;
+}
+main form button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+/* Стили для сообщений об ошибках и успехе */
+main form p[style*="color: red"] { /* Для <p style={{ color: 'red', fontWeight: 'bold' }}>{error}</p> */
+  background-color: #f8d7da;
+  color: #721c24 !important; /* Важно, чтобы переопределить инлайн стиль цвета */
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-weight: normal !important; /* Убираем жирность, если она из инлайн стиля */
+}
+
+main form p[style*="color: green"] { /* Для <p style={{ color: 'green', fontWeight: 'bold' }}>{success}</p> */
+  background-color: #d4edda;
+  color: #155724 !important;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-weight: normal !important;
+}
+
+.App-header .app-controls {
+  display: flex;
+  flex-direction: column; /* По умолчанию элементы в столбик (для мобильных) */
+  align-items: center; /* Центрируем элементы в столбике */
+  gap: 15px; /* Пространство между блоком кнопок и блоком протокола */
+}
+
+.navigation-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Позволяем кнопкам переноситься, если их много */
+  justify-content: center; /* Центрируем кнопки, если они перенеслись */
+  gap: 8px; /* Пространство между кнопками навигации */
+  width: 100%; /* Занимаем всю доступную ширину */
+}
+
+.navigation-buttons button {
+  background-color: #6c757d;
+  padding: 8px 12px; /* Уменьшим немного паддинги кнопок */
+  font-size: 0.9em;
+  border-radius: 5px;
+  flex-grow: 1; /* Позволяем кнопкам растягиваться, чтобы занять место */
+  text-align: center;
+  min-width: 100px; /* Минимальная ширина для читаемости */
+}
+.navigation-buttons button:hover {
+  background-color: #5a6268;
+}
+.navigation-buttons button:disabled {
+  background-color: #007bff;
+  color: white;
+  cursor: default;
+  border-color: #007bff; /* Убираем рамку по умолчанию, если она есть */
+}
+
+.protocol-switcher {
+  display: flex;
+  flex-direction: column; /* Метка над селектом */
+  align-items: center; /* Центрируем */
+  gap: 5px;
+  width: 100%;
+  max-width: 250px; /* Ограничим максимальную ширину селекта */
+  margin: 0 auto; /* Центрируем сам блок, если он уже максимальной ширины */
+}
+
+.protocol-switcher label {
+  font-size: 0.85em;
+  color: #f0f0f0; /* Светлее для темного фона */
+}
+
+.protocol-switcher select {
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  color: #495057;
+  width: 100%; /* Селект на всю ширину своего контейнера */
+}
+
+@media (min-width: 600px) { /* Точку перелома (breakpoint) можно настроить */
+  .App-header h1 {
+    font-size: 2em; /* Возвращаем размер заголовка */
+    margin-bottom: 20px;
+  }
+
+  .App-header .app-controls {
+    flex-direction: row; /* Элементы в ряд */
+    justify-content: space-between; /* Разносим по краям */
+    align-items: center;
+    gap: 20px;
+  }
+
+  .navigation-buttons {
+    width: auto; /* Возвращаем автоматическую ширину */
+    justify-content: flex-start; /* Кнопки слева */
+    margin-bottom: 0; /* Убираем отступ снизу */
+  }
+  .navigation-buttons button {
+    flex-grow: 0; /* Кнопки не растягиваются */
+  }
+
+  .protocol-switcher {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    flex-direction: row; /* Метка и селект в ряд */
+    align-items: center;
+  }
+  .protocol-switcher label {
+    margin-right: 8px; /* Отступ между меткой и селектом */
+  }
+  .protocol-switcher select {
+    width: auto; /* Автоматическая ширина для селекта */
+    min-width: 150px;
+  }
+}
+
+.join-pharmacy-section {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+.join-pharmacy-section h3 {
+  margin-top: 0;
+}
+
+.days-of-week-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.day-checkbox-label {
+    display: flex;
+    align-items: center;
+    font-weight: normal; /* Убираем жирность с label внутри */
+    cursor: pointer;
+    padding: 2px 5px;
+}
+
+.day-checkbox-label input[type="checkbox"] {
+    width: auto; /* Сбрасываем глобальный стиль для инпутов внутри формы */
+    margin-right: 5px;
+}
+
+.all-days-label {
+    margin-top: 5px;
+}
+
+.checkbox-label-inline input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.checkbox-label-inline {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

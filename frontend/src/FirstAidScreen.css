@@ -1,0 +1,99 @@
+/* frontend/src/FirstAidScreen.css */
+.first-aid-container {
+    padding: 20px;
+}
+
+.first-aid-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.first-aid-search-input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+.first-aid-search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+
+.first-aid-topic-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.first-aid-topic-item {
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden; /* Чтобы скругление работало с внутренними блоками */
+}
+
+.topic-title-button {
+    background-color: #f8f9fa;
+    color: #212529;
+    padding: 12px 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #e0e0e0; /* Разделитель, если контент не раскрыт */
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topic-title-button:hover {
+    background-color: #e9ecef;
+}
+
+.first-aid-topic-item[aria-expanded="true"] .topic-title-button {
+    border-bottom-color: transparent; /* Убираем нижнюю границу, если контент раскрыт */
+}
+
+
+.expand-icon {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.topic-content {
+    padding: 15px;
+    background-color: #fff;
+}
+
+.topic-section {
+    margin-bottom: 15px;
+}
+.topic-section:last-child {
+    margin-bottom: 0;
+}
+
+.topic-section h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #007bff;
+    font-size: 1em;
+}
+
+.topic-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.topic-section ul li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+    font-size: 0.95em;
+}

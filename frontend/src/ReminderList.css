@@ -1,0 +1,107 @@
+/* frontend/src/ReminderList.css */
+.reminder-list-container {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.reminder-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.reminder-list-header h2 {
+    margin: 0;
+    font-size: 1.4em;
+}
+
+.add-reminder-btn {
+    background-color: #007bff; /* Синий для добавления напоминания */
+}
+.add-reminder-btn:hover {
+    background-color: #0056b3;
+}
+
+.reminders {
+    list-style-type: none;
+    padding: 0;
+}
+
+.reminder-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-left-width: 5px;
+    border-left-color: #17a2b8; /* Цвет для активных напоминаний */
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.reminder-item.inactive {
+    border-left-color: #6c757d; /* Серый для неактивных */
+    opacity: 0.7;
+}
+
+.reminder-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Небольшой отступ между строками информации */
+}
+
+.reminder-info span {
+    font-size: 0.9em;
+}
+
+.reminder-medicine strong {
+    font-size: 1.05em;
+    color: #333;
+}
+
+.reminder-time {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.reminder-days, .reminder-dates, .reminder-notes {
+    color: #555;
+}
+.reminder-notes em {
+    font-style: italic;
+}
+
+.reminder-status-inactive {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.reminder-actions {
+    display: flex;
+    flex-direction: column; /* Кнопки друг под другом для экономии места */
+    gap: 8px;
+}
+
+.reminder-actions .action-btn {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 1.2em; /* Немного увеличим иконки */
+    padding: 3px;
+}
+.reminder-actions .action-btn:hover {
+    color: #000;
+}
+.reminder-actions .edit-btn:hover {
+    color: #ffc107; /* Желтый для редактирования */
+}
+.reminder-actions .delete-btn:hover {
+    color: #dc3545; /* Красный для удаления */
+}
